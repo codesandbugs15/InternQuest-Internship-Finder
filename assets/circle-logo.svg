@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- ID Card outline -->
+    <path d="M4 8h32v24H4V8z" stroke="currentColor" stroke-width="2" fill="none"/>
+    <!-- Top attachment -->
+    <path d="M16 4h8v4h-8V4z" stroke="currentColor" stroke-width="2" fill="none"/>
+    <!-- User icon -->
+    <circle cx="12" cy="16" r="2.5" stroke="currentColor" stroke-width="2" fill="none"/>
+    <!-- Text lines -->
+    <path d="M16 14h12" stroke="currentColor" stroke-width="2"/>
+    <path d="M16 18h12" stroke="currentColor" stroke-width="2"/>
+    <!-- Internship text -->
+    <text x="20" y="26" text-anchor="middle" font-size="4.5" fill="currentColor" font-family="Arial, sans-serif" font-weight="bold">INTERNSHIP</text>
+</svg> 

@@ -1,0 +1,539 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --text-dark: #1F2937;
+    --text-medium: #6B7280;
+    --text-light: #FFFFFF;
+    --border-color: rgba(209, 213, 219, 0.3);
+    --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --card-hover-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --blur-effect: blur(8px);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: url('assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: #000;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: transform var(--transition-speed) ease;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="range"] {
+    font-family: inherit;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="search"] {
+    flex-grow: 1;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+}
+
+input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+    accent-color: #000;
+}
+
+label {
+    margin-bottom: 5px;
+    display: inline-block;
+    color: var(--text-medium);
+    font-weight: 500;
+}
+
+/* --- Header --- */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+header nav a {
+    color: var(--text-dark);
+    opacity: 1;
+}
+
+header nav a:hover {
+    color: var(--text-dark);
+    opacity: 1;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.logo span {
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+/* home button */
+nav a {
+    text-decoration: none;
+    color: #000;
+    padding: 0.3rem 3rem;
+    border-radius: 8px;
+    background: rgba(248, 239, 229, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 2px solid #000;
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    line-height: 1;
+}
+
+nav a:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: #ebc7b5;
+    color: #fff;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: #ebc7b5;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-signin {
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border: 2px solid #000;
+}
+
+.btn-signin:hover {
+    background: #ebc7b5;
+    color: #fff;
+}
+
+.btn-primary {
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border: 2px solid #000;
+}
+
+.btn-primary:hover {
+    background: #ebc7b5;
+    color: #fff;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid #000;
+    color: #000;
+}
+
+.btn-secondary:hover {
+    background: #ebc7b5;
+    color: #fff;
+}
+
+/* --- Main Content Layout --- */
+main {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    flex: 0 0 250px;
+    background: rgba(248, 239, 229, 0.3);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    border: 1px solid rgba(248, 239, 229, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+
+.filter-group h4 {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background: rgba(248, 239, 229, 0.3);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.remove-tag {
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #666;
+}
+
+.checkbox-group {
+    margin-bottom: 0.5rem;
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+    color: var(--text-dark);
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkbox-group:hover label {
+    color: #000;
+}
+
+.stipend-range {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stipend-range span {
+    font-size: 0.85rem;
+    color: #000;
+}
+
+#stipend {
+    margin-bottom: 0;
+    cursor: pointer;
+    accent-color: #000;
+}
+
+#stipend-value {
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #000;
+    margin-top: 5px;
+}
+
+.stipend-range input[type="range"] {
+    transition: all 0.3s ease;
+}
+
+.stipend-range input[type="range"]:hover {
+    transform: scaleY(1.2);
+}
+
+/* --- Job Listings Area --- */
+.job-listings {
+    flex: 1;
+}
+
+.search-and-filters {
+    margin-bottom: 2rem;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    padding: 8px 20px;
+    border: 2px solid #000;
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-bar button:hover {
+    background: #ebc7b5;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quick-filters {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-tag {
+    padding: 0.5rem 1rem;
+    background: rgba(248, 239, 229, 0.3);
+    border: 1px solid rgba(248, 239, 229, 0.1);
+    border-radius: 20px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.filter-tag.active {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    border: 2px solid #000;
+}
+
+.filter-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Job Grid & Cards --- */
+.job-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.job-card {
+    background: rgba(248, 239, 229, 0.9);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.job-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.job-card h3 {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.job-card .company {
+    color: var(--text-medium);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.job-card .location {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-medium);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.job-card .stipend {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.job-card .duration {
+    color: var(--text-medium);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    main {
+        flex-direction: column;
+    }
+    .sidebar {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .job-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 3%;
+    }
+    nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    main {
+        padding: 20px 3%;
+    }
+    .job-grid {
+        grid-template-columns: 1fr;
+    }
+    .search-and-filters {
+        flex-direction: column;
+    }
+    .search-bar {
+        width: 100%;
+    }
+    .quick-filters {
+        justify-content: center;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Nav links hover effect */
+nav a {
+    position: relative;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Popup Notification */
+.popup-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(235, 199, 181, 0.95);
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: none;
+    animation: slideIn 0.3s ease-out forwards;
+    z-index: 1000;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.popup-notification.show {
+    display: block;
+}

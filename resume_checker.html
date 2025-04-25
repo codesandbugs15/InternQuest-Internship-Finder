@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Resume Checker - InternQuest</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="internship_finder.css" rel="stylesheet">
+    <link href="assets/crop2.PNG" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="courses.css">
+    <style>
+        .resume-checker-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #298da4 0%, #6ba2a9 50%, #e4c5b3 100%);
+            padding: 40px 20px;
+        }
+
+        .resume-checker-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 60px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .resume-checker-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .resume-checker-header h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .resume-checker-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .file-upload-container {
+            border: 2px dashed #b5d8d4;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            background: rgba(181, 216, 212, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin: 40px 0;
+        }
+
+        .file-upload-container:hover {
+            border-color: #53b7c6;
+            background: rgba(83, 183, 198, 0.1);
+        }
+
+        .file-upload-icon {
+            font-size: 48px;
+            color: #53b7c6;
+            margin-bottom: 20px;
+        }
+
+        .file-upload-text {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .file-upload-subtext {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .upload-btn {
+            display: inline-block;
+            background: #53b7c6;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .upload-btn:hover {
+            background: #3a9aa8;
+            transform: translateY(-2px);
+        }
+
+        .privacy-notice {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .privacy-notice svg {
+            width: 16px;
+            height: 16px;
+            fill: #666;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .score-preview {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 60px;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .score-section {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .score-gauge {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .score-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: #53b7c6;
+        }
+
+        .score-details {
+            flex: 2;
+            padding-left: 40px;
+        }
+
+        .score-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .score-item-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+        }
+
+        .score-item-text {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .resume-checker-content {
+                padding: 30px;
+            }
+
+            .score-preview {
+                flex-direction: column;
+            }
+
+            .score-details {
+                padding-left: 0;
+                padding-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/crop.PNG" alt="InternQuest Logo">
+        
+        </div>
+        <nav>
+            <ul>
+                <li><a href="internship_finder.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="resume-checker-container">
+        <div class="resume-checker-content">
+            <div class="resume-checker-header">
+                <h1>Is your resume good enough?</h1>
+                <p>A free and fast AI resume checker doing 16 crucial checks to ensure your resume is ready to perform and get you interview callbacks.</p>
+            </div>
+
+            <div class="file-upload-container" onclick="document.getElementById('fileInput').click()">
+                <div class="file-upload-icon">📄</div>
+                <div class="file-upload-text">Drop your resume here or choose a file</div>
+                <div class="file-upload-subtext">PDF & DOCX only. Max 2MB file size.</div>
+                <input type="file" id="fileInput" accept=".pdf,.docx" onchange="handleFileSelect(event)">
+                <button class="upload-btn">Upload Your Resume</button>
+            </div>
+
+            <div class="privacy-notice">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                </svg>
+                Privacy guaranteed
+            </div>
+
+            <div class="score-preview" style="display: none;" id="scorePreview">
+                <div class="score-section">
+                    <div class="score-gauge">
+                        <svg width="150" height="150" viewBox="0 0 150 150">
+                            <circle cx="75" cy="75" r="60" fill="none" stroke="#e6e6e6" stroke-width="10"/>
+                            <circle cx="75" cy="75" r="60" fill="none" stroke="#53b7c6" stroke-width="10" stroke-dasharray="0 377" id="scoreCircle"/>
+                        </svg>
+                        <div class="score-number">92</div>
+                    </div>
+                </div>
+                <div class="score-details">
+                    <div class="score-item">
+                        <div class="score-item-icon">✓</div>
+                        <div class="score-item-text">ATS Parse Rate</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-item-icon">✓</div>
+                        <div class="score-item-text">Quantifying Impact</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-item-icon">✓</div>
+                        <div class="score-item-text">Spelling & Grammar</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-item-icon">✓</div>
+                        <div class="score-item-text">Format & Style</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                // Show loading state
+                document.querySelector('.file-upload-text').textContent = `Selected: ${file.name}`;
+                
+                // Simulate processing delay
+                setTimeout(() => {
+                    // Show score preview
+                    const scorePreview = document.getElementById('scorePreview');
+                    scorePreview.style.display = 'flex';
+                    
+                    // Animate score circle
+                    const scoreCircle = document.getElementById('scoreCircle');
+                    const score = 92;
+                    const circumference = 2 * Math.PI * 60;
+                    const offset = circumference - (score / 100) * circumference;
+                    scoreCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+                    scoreCircle.style.strokeDashoffset = offset;
+                }, 1500);
+            }
+        }
+
+        // Add drag and drop functionality
+        const dropZone = document.querySelector('.file-upload-container');
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#53b7c6';
+            dropZone.style.background = 'rgba(83, 183, 198, 0.1)';
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#b5d8d4';
+            dropZone.style.background = 'rgba(181, 216, 212, 0.1)';
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                document.getElementById('fileInput').files = files;
+                handleFileSelect({ target: { files: files } });
+            }
+            dropZone.style.borderColor = '#b5d8d4';
+            dropZone.style.background = 'rgba(181, 216, 212, 0.1)';
+        });
+    </script>
+</body>
+</html> 
